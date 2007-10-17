@@ -22,7 +22,7 @@ import java.util.Vector;
 
 /**
  *
- * @author aramcho
+ * @author aramcho2
  */
 public class Buscador {
     private final int MAX_REGISTROS = 30;

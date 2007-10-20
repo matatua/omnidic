@@ -165,8 +165,9 @@ public class Buscador {
     public String buscarPalabraExacta(String palabra) throws IOException{
         String file=null;
         for (int i = 0; i < index.length; i++){
-            if ( (palabra.compareTo(index[i][0])==0 || palabra.compareTo(index[i][0]) > 0) && ( palabra.compareTo(index[i][1])==0 || palabra.compareTo(index[i][1]) < 0 ) ){
+            if ( (palabra.compareTo(index[i][0])>=0 ) && (palabra.compareTo(index[i][1]) <= 0 ) ){
                    file= index[i][2];
+                   break;
             }
         }
         if (file==null)

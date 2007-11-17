@@ -81,11 +81,8 @@ public class SearchCanvas extends Canvas implements CommandListener {
     }
 
     protected void keyPressed(int keyCode) {
-      //if (keyCode !=-2 && keyCode !=-1 && keyCode !=-5 ||  keyCode!=-59 || keyCode !=-60){
-        //System.out.println(keyCode);
-       //if ( (keyCode >=49 && keyCode <=57) || keyCode ==-3 || keyCode == -4 || keyCode == 42 || keyCode==-8) {
           
-          if ( (keyCode >=49 && keyCode <=57) || keyCode == 42 || keyCode==-8){
+          if ( Keyboard.isTextButtonPushed(keyCode)){
             txtBuscar.gestionarEvento(keyCode);
           }else{
               if (getGameAction(keyCode)==LEFT || (keyCode==-2 && getGameAction(keyCode)==0)) //-2 and -5 are Motorola phones
@@ -101,15 +98,10 @@ public class SearchCanvas extends Canvas implements CommandListener {
                 this.notify();
               }
           }
-      //}
-        
-      //System.out.println(keyCode);
       
-      //if (keyCode==-2 || keyCode==-1 ||  keyCode==-59 || keyCode ==-60 || keyCode==48 || keyCode==35){
-          //pBuscador.parar(true);
           lstResults.gestionarEvento(Keyboard.getValidKeyCode(getGameAction(keyCode), keyCode));
           
-      //}
+      
       
       if (keyCode!=KEY_NUM5 && getGameAction(keyCode) ==FIRE){
          //pBuscador.buscarPalabra(lstResults.getSelectedText());

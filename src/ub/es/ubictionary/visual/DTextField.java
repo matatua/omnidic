@@ -13,6 +13,7 @@
 
 package ub.es.ubictionary.visual;
 
+import javax.microedition.lcdui.Canvas;
 import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Graphics;
 
@@ -77,8 +78,8 @@ public class DTextField extends DControl {
   
     
     public void gestionarEvento(int cod){
-        //System.out.println(keys[cod-49].length());
-         if (cod >= 49 && cod <= 57 && ancho - fuente.stringWidth(contenido.toString())>7){  //Gestion de entrada de letras
+        
+         if (cod >= Canvas.KEY_NUM1 && cod <= Canvas.KEY_NUM9 && ancho - fuente.stringWidth(contenido.toString())>7){  //Gestion de entrada de letras
             if (cod == lastKey){
                 if (System.currentTimeMillis() - tick < 900){
                     keyIndex ++;
@@ -91,13 +92,27 @@ public class DTextField extends DControl {
                 keyIndex = 0;
                 cursorPos++;
             }
+            
+            int pushedKey=0;
+            
+            switch(cod){
+                case Canvas.KEY_NUM1: pushedKey=0; break;
+                case Canvas.KEY_NUM2: pushedKey=1; break;
+                case Canvas.KEY_NUM3: pushedKey=2; break;
+                case Canvas.KEY_NUM4: pushedKey=3; break;
+                case Canvas.KEY_NUM5: pushedKey=4; break;
+                case Canvas.KEY_NUM6: pushedKey=5; break;
+                case Canvas.KEY_NUM7: pushedKey=6; break;
+                case Canvas.KEY_NUM8: pushedKey=7; break;
+                case Canvas.KEY_NUM9: pushedKey=8; break;
+            }
 
-            if (keys[cod-49].length() == keyIndex)
+            if (keys[pushedKey].length() == keyIndex)
                 keyIndex = 0;
 
-            contenido.insert(cursorPos-1, keys[cod-49].charAt(keyIndex));
+            contenido.insert(cursorPos-1, keys[pushedKey].charAt(keyIndex));
          }else{
-             if (cod == 42 || cod == -8){  //Borrar letrass
+             if (cod == Canvas.KEY_STAR || cod == -8){  //Borrar letrass
                  if (cursorPos != 0){
                      contenido.delete(cursorPos-1,cursorPos);
                      cursorPos--;

@@ -37,6 +37,15 @@ public class Keyboard {
             else
                 return rawCode;
         }
-        
+    }
+    
+    public static boolean isTextButtonPushed(int keyCode)
+    {
+        if (keyCode==Canvas.KEY_NUM1 || keyCode==Canvas.KEY_NUM2 || keyCode==Canvas.KEY_NUM3 || keyCode==Canvas.KEY_NUM4 
+                 || keyCode==Canvas.KEY_NUM5 || keyCode==Canvas.KEY_NUM6 || keyCode==Canvas.KEY_NUM7 || keyCode==Canvas.KEY_NUM8
+                 || keyCode==Canvas.KEY_NUM9  || keyCode==Canvas.KEY_STAR || keyCode==-8)
+            return true;
+        else
+            return false;
     }
 }

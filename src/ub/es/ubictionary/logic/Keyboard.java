@@ -43,9 +43,17 @@ public class Keyboard {
     {
         if (keyCode==Canvas.KEY_NUM1 || keyCode==Canvas.KEY_NUM2 || keyCode==Canvas.KEY_NUM3 || keyCode==Canvas.KEY_NUM4 
                  || keyCode==Canvas.KEY_NUM5 || keyCode==Canvas.KEY_NUM6 || keyCode==Canvas.KEY_NUM7 || keyCode==Canvas.KEY_NUM8
-                 || keyCode==Canvas.KEY_NUM9  || keyCode==Canvas.KEY_STAR || keyCode==-8)
+                 || keyCode==Canvas.KEY_NUM9  || keyCode==Canvas.KEY_STAR || keyCode==-8 || isASCII(keyCode))
             return true;
         else
             return false;
+    }
+    
+    public static boolean isASCII(int c){
+        //if c = space or c = backspace or c = A_Za_z
+        if (c == 32 || c == 8 || (c>= 65 && c <= 90) || (c >=97 && c <=122)){
+            return true;
+        }
+        return false;
     }
 }

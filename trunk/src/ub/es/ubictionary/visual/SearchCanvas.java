@@ -81,7 +81,6 @@ public class SearchCanvas extends Canvas implements CommandListener {
     }
 
     protected void keyPressed(int keyCode) {
-          
           if ( Keyboard.isTextButtonPushed(keyCode)){
             txtBuscar.gestionarEvento(keyCode);
           }else{
@@ -92,7 +91,7 @@ public class SearchCanvas extends Canvas implements CommandListener {
           }
           
           //Hago las búsqueda solo si ha cambiado el contenido en el textbox
-          if ( (keyCode >=49 && keyCode <=57) || keyCode ==-8 || keyCode == 42){
+          if ( (keyCode >=49 && keyCode <=57) || keyCode ==-8 || keyCode == 42 || Keyboard.isASCII(keyCode)){
               pBuscador.setTextoABuscar(txtBuscar.getText());
               synchronized(this){
                 this.notify();
@@ -103,7 +102,7 @@ public class SearchCanvas extends Canvas implements CommandListener {
           
       
       
-      if (keyCode!=KEY_NUM5 && getGameAction(keyCode) ==FIRE){
+      if ((keyCode!=KEY_NUM5 && getGameAction(keyCode) ==FIRE && keyCode!=32) || keyCode==10){
          //pBuscador.buscarPalabra(lstResults.getSelectedText());
          this.buscar();
       }

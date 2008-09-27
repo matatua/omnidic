@@ -16,6 +16,7 @@ package ub.es.ubictionary.visual;
 import javax.microedition.lcdui.Canvas;
 import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Graphics;
+import ub.es.ubictionary.logic.Keyboard;
 
 /**
  *
@@ -79,6 +80,17 @@ public class DTextField extends DControl {
     
     public void gestionarEvento(int cod){
         
+        if (Keyboard.isASCII(cod) && ancho - fuente.stringWidth(contenido.toString())>7){
+            if ('\b' == (char) cod){
+                //backspace
+                contenido.delete(cursorPos-1,cursorPos);
+                cursorPos--;
+            }else{
+                cursorPos++;
+                contenido.insert(cursorPos-1, (char) cod);
+            }
+        }
+         
          if (cod >= Canvas.KEY_NUM1 && cod <= Canvas.KEY_NUM9 && ancho - fuente.stringWidth(contenido.toString())>7){  //Gestion de entrada de letras
             if (cod == lastKey){
                 if (System.currentTimeMillis() - tick < 900){
